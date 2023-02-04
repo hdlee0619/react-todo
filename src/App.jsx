@@ -1,6 +1,7 @@
 import CreateToDoContainer from './components/CreateToDoContainer';
 import styled from 'styled-components';
-import ToDoListContainer from './components/ToDoListContainer';
+import { useState } from 'react';
+import ToDoCardContainer from './components/ToDoCardContainer';
 
 const AppContainer = styled.div`
   max-width: 1200px;
@@ -23,6 +24,24 @@ const Header = styled.div`
   font-size: 40px;
 `;
 
+const ListContainer = styled.div`
+  margin-top: 50px;
+  background-color: #f6dfbf;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 20px;
+`;
+
+const ToDoTitle = styled.h4`
+  font-size: 24px;
+  margin-left: 17px;
+`;
+
+const ToDoList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
 const App = () => {
   return (
     <AppContainer>
@@ -32,7 +51,14 @@ const App = () => {
       </Header>
       <main>
         <CreateToDoContainer></CreateToDoContainer>
-        <ToDoListContainer></ToDoListContainer>
+        <ListContainer>
+          <ToDoTitle>Work.. 🔥</ToDoTitle>
+          <ToDoList>
+            <ToDoCardContainer></ToDoCardContainer>
+          </ToDoList>
+          <ToDoTitle>Done.. 🎉</ToDoTitle>
+          <ToDoList></ToDoList>
+        </ListContainer>
       </main>
     </AppContainer>
   );
