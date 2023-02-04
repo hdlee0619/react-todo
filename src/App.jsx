@@ -22,6 +22,7 @@ const Header = styled.div`
   border-radius: 15px;
   color: #a7727d;
   font-size: 40px;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 `;
 
 const ListContainer = styled.div`
@@ -30,6 +31,7 @@ const ListContainer = styled.div`
   padding-top: 8px;
   padding-bottom: 8px;
   border-radius: 20px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 `;
 
 const ToDoTitle = styled.h4`
