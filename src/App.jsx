@@ -1,10 +1,10 @@
-import CreateToDo from './components/CreateToDo';
+import CreateToDoContainer from './components/CreateToDoContainer';
 import styled from 'styled-components';
+import ToDoListContainer from './components/ToDoListContainer';
 
 const AppContainer = styled.div`
   max-width: 1200px;
   min-width: 800px;
-  height: 90vh;
   display: flex-column;
   align-items: center;
   margin: 50px auto 50px auto;
@@ -31,7 +31,8 @@ const App = () => {
         <h3>React</h3>
       </Header>
       <main>
-        <CreateToDo></CreateToDo>
+        <CreateToDoContainer></CreateToDoContainer>
+        <ToDoListContainer></ToDoListContainer>
       </main>
     </AppContainer>
   );
