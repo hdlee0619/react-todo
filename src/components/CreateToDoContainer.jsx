@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 
 const FormContainer = styled.form`
   display: flex;
@@ -49,19 +50,43 @@ const ToDoSubmitBtn = styled.button`
   font-size: 15px;
 `;
 
-const CreateToDoContainer = () => {
+const CreateToDoContainer = (props) => {
+  let [toDoTitle, setToDoTitle] = useState('');
+  const changeToDoTitleValue = (event) => {
+    setToDoTitle(event.target.value);
+  };
+
+  let [toDoComment, setToDoComment] = useState('');
+  const changeToDoCommentValue = (event) => {
+    setToDoComment(event.target.value);
+  };
+
+  const AddToDo = () => {
+    if (toDoTitle === '') {
+      alert('To Do는 입력해주세요 😉');
+    }
+    let copy = [{ id: props.toDo.length, title: toDoTitle, comment: toDoComment, isDone: false }, ...props.toDo];
+    props.setToDo(copy);
+    setToDoTitle('');
+    setToDoComment('');
+  };
+
+  const postRequest = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <>
-      <FormContainer>
+      <FormContainer action="/" onSubmit={postRequest}>
         <InputContainer>
           <InputHead>To Do</InputHead>
-          <ToDoInput placeholder="할 일을 입력하세요"></ToDoInput>
+          <ToDoInput onChange={changeToDoTitleValue} value={toDoTitle} placeholder="할 일을 입력하세요"></ToDoInput>
         </InputContainer>
         <InputContainer>
           <InputHead>Comment</InputHead>
-          <ToDoInput placeholder="내용을 입력하세요"></ToDoInput>
+          <ToDoInput onChange={changeToDoCommentValue} value={toDoComment} placeholder="내용을 입력하세요"></ToDoInput>
         </InputContainer>
-        <ToDoSubmitBtn>등록</ToDoSubmitBtn>
+        <ToDoSubmitBtn onClick={AddToDo}>등록</ToDoSubmitBtn>
       </FormContainer>
     </>
   );

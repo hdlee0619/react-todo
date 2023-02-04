@@ -43,6 +43,11 @@ const ToDoList = styled.div`
 `;
 
 const App = () => {
+  let [toDo, setToDo] = useState([
+    { id: 0, title: '리액트공부하기', comment: '리액트 기초를 공부해봅시다.', isDone: false },
+    { id: 1, title: '항해99', comment: 'todolist 만들기', isDone: true },
+  ]);
+
   return (
     <AppContainer>
       <Header>
@@ -50,11 +55,19 @@ const App = () => {
         <h3>React</h3>
       </Header>
       <main>
-        <CreateToDoContainer></CreateToDoContainer>
+        <CreateToDoContainer toDo={toDo} setToDo={setToDo}></CreateToDoContainer>
         <ListContainer>
           <ToDoTitle>Work.. 🔥</ToDoTitle>
           <ToDoList>
-            <ToDoCardContainer></ToDoCardContainer>
+            {toDo
+              .sort((a, b) => b.id - a.id)
+              .map((item, idx) => {
+                return (
+                  <ToDoCardContainer toDo={item} setToDo={setToDo} key={item.id}>
+                    완료
+                  </ToDoCardContainer>
+                );
+              })}
           </ToDoList>
           <ToDoTitle>Done.. 🎉</ToDoTitle>
           <ToDoList></ToDoList>

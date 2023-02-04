@@ -41,16 +41,16 @@ const BtnContainer = styled.div`
   justify-content: space-evenly;
 `;
 
-const ToDoCardContainer = () => {
+const ToDoCardContainer = (props) => {
   return (
     <ToDoCard>
       <div>
-        <CardTitle>test title</CardTitle>
-        <CardComment>test comment</CardComment>
+        <CardTitle>{props.toDo.title}</CardTitle>
+        <CardComment>{props.toDo.comment}</CardComment>
       </div>
       <BtnContainer>
         <DeleteCardBtn>삭제</DeleteCardBtn>
-        <DoneCardBtn>취소</DoneCardBtn>
+        <DoneCardBtn>{props.children}</DoneCardBtn>
       </BtnContainer>
     </ToDoCard>
   );
