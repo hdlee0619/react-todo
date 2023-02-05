@@ -62,9 +62,9 @@ const CreateToDoContainer = (props) => {
     setToDoComment(event.target.value);
   };
 
-  const AddToDo = () => {
+  const addToDo = () => {
     if (toDoTitle === '') {
-      alert('To Do는 입력해주세요 😉');
+      return alert('To Do는 입력해주세요 😉');
     }
     let copy = [{ id: props.toDo.length, title: toDoTitle, comment: toDoComment, isDone: false }, ...props.toDo];
     props.setToDo(copy);
@@ -87,7 +87,7 @@ const CreateToDoContainer = (props) => {
           <InputHead>Comment</InputHead>
           <ToDoInput onChange={changeToDoCommentValue} value={toDoComment} placeholder="내용을 입력하세요"></ToDoInput>
         </InputContainer>
-        <ToDoSubmitBtn onClick={AddToDo}>등록</ToDoSubmitBtn>
+        <ToDoSubmitBtn onClick={addToDo}>등록</ToDoSubmitBtn>
       </FormContainer>
     </>
   );
