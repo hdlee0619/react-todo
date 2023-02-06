@@ -5,10 +5,10 @@ const FormContainer = styled.form`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: #eae0da;
   border-radius: 15px;
-  color: #a0c3d2;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  background-color: #eae0da;
+  color: #a0c3d2;
 `;
 
 const InputContainer = styled.div`
@@ -23,12 +23,11 @@ const InputHead = styled.h4`
 `;
 
 const ToDoInput = styled.input`
-  margin: auto 0 auto 0;
   padding: 10px;
-  margin-left: 15px;
-  background-color: #f7f5eb;
+  margin: auto 0 auto 15px;
   border: none;
   border-radius: 10px;
+  background-color: #f7f5eb;
   font-size: 15px;
   &:focus {
     outline: none;
@@ -37,16 +36,16 @@ const ToDoInput = styled.input`
 `;
 
 const ToDoSubmitBtn = styled.button`
-  height: 40px;
-  margin-left: 60px;
-  width: 100px;
-  padding: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #a0c3d2;
-  border-radius: 8px;
+  width: 100px;
+  height: 40px;
+  padding: 12px;
   border: 1px solid #eac7c7;
+  border-radius: 8px;
+  margin-left: 60px;
+  background-color: #a0c3d2;
   color: #144272;
   font-size: 15px;
 `;

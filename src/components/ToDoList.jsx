@@ -3,8 +3,8 @@ import ToDoCards from './ToDoCards';
 import styled from 'styled-components';
 
 const ToDoTitle = styled.h4`
-  font-size: 24px;
   margin-left: 17px;
+  font-size: 24px;
 `;
 
 const ToDoCardContainer = styled.div`
