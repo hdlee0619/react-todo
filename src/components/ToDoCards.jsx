@@ -37,15 +37,9 @@ const ToDoCards = ({ mapItem, toDo, setToDoHandler, children }) => {
     setToDoHandler(copy.filter((item) => mapItem.id !== item.id));
   };
   const changeStateIsDone = () => {
-    let copy = [...toDo.filter((item) => mapItem.id !== item.id)];
-
-    if (mapItem.isDone === false) {
-      mapItem.isDone = true;
-      setToDoHandler([mapItem, ...copy]);
-    } else {
-      mapItem.isDone = false;
-      setToDoHandler([mapItem, ...copy]);
-    }
+    let copy = [...toDo];
+    mapItem.isDone = mapItem.isDone ? false : true;
+    setToDoHandler(copy.map((item) => (item.id === mapItem.id ? mapItem : item)));
   };
   return (
     <ToDoCard>
