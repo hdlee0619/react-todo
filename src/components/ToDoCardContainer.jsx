@@ -47,6 +47,17 @@ const ToDoCardContainer = (props) => {
     let copy = [...props.toDo];
     props.setToDo(copy.filter((item) => props.item.id !== item.id));
   };
+  const changeStateIsDone = () => {
+    let copy = [...props.toDo.filter((item) => props.item.id !== item.id)];
+
+    if (props.item.isDone === false) {
+      props.item.isDone = true;
+      props.setToDo([props.item, ...copy]);
+    } else {
+      props.item.isDone = false;
+      props.setToDo([props.item, ...copy]);
+    }
+  };
   return (
     <ToDoCard>
       <div>
@@ -55,7 +66,7 @@ const ToDoCardContainer = (props) => {
       </div>
       <BtnContainer>
         <DeleteCardBtn onClick={deleteToDoCard}>삭제</DeleteCardBtn>
-        <DoneCardBtn>{props.children}</DoneCardBtn>
+        <DoneCardBtn onClick={changeStateIsDone}>{props.children}</DoneCardBtn>
       </BtnContainer>
     </ToDoCard>
   );

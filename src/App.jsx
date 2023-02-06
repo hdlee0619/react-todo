@@ -62,6 +62,7 @@ const App = () => {
           <ToDoTitle>Work.. 🔥</ToDoTitle>
           <ToDoList>
             {toDo
+              .filter((item) => item.isDone === false)
               .sort((a, b) => b.id - a.id)
               .map((item) => {
                 return (
@@ -72,7 +73,18 @@ const App = () => {
               })}
           </ToDoList>
           <ToDoTitle>Done.. 🎉</ToDoTitle>
-          <ToDoList></ToDoList>
+          <ToDoList>
+            {toDo
+              .filter((item) => item.isDone !== false)
+              .sort((a, b) => b.id - a.id)
+              .map((item) => {
+                return (
+                  <ToDoCardContainer item={item} setToDo={setToDo} toDo={toDo} key={item.id}>
+                    취소
+                  </ToDoCardContainer>
+                );
+              })}
+          </ToDoList>
         </ListContainer>
       </main>
     </AppContainer>
