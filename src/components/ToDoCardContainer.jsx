@@ -42,31 +42,31 @@ const BtnContainer = styled.div`
   justify-content: space-evenly;
 `;
 
-const ToDoCardContainer = (props) => {
-  const deleteToDoCard = (id) => {
-    let copy = [...props.toDo];
-    props.setToDo(copy.filter((item) => props.item.id !== item.id));
+const ToDoCardContainer = ({ mapItem, toDo, setToDo, children }) => {
+  const deleteToDoCard = () => {
+    let copy = [...toDo];
+    setToDo(copy.filter((item) => mapItem.id !== item.id));
   };
   const changeStateIsDone = () => {
-    let copy = [...props.toDo.filter((item) => props.item.id !== item.id)];
+    let copy = [...toDo.filter((item) => mapItem.id !== item.id)];
 
-    if (props.item.isDone === false) {
-      props.item.isDone = true;
-      props.setToDo([props.item, ...copy]);
+    if (mapItem.isDone === false) {
+      mapItem.isDone = true;
+      setToDo([mapItem, ...copy]);
     } else {
-      props.item.isDone = false;
-      props.setToDo([props.item, ...copy]);
+      mapItem.isDone = false;
+      setToDo([mapItem, ...copy]);
     }
   };
   return (
     <ToDoCard>
       <div>
-        <CardTitle>{props.item.title}</CardTitle>
-        <CardComment>{props.item.comment}</CardComment>
+        <CardTitle>{mapItem.title}</CardTitle>
+        <CardComment>{mapItem.comment}</CardComment>
       </div>
       <BtnContainer>
         <DeleteCardBtn onClick={deleteToDoCard}>삭제</DeleteCardBtn>
-        <DoneCardBtn onClick={changeStateIsDone}>{props.children}</DoneCardBtn>
+        <DoneCardBtn onClick={changeStateIsDone}>{children}</DoneCardBtn>
       </BtnContainer>
     </ToDoCard>
   );

@@ -51,7 +51,7 @@ const ToDoSubmitBtn = styled.button`
   font-size: 15px;
 `;
 
-const CreateToDoContainer = (props) => {
+const CreateToDoContainer = ({ toDo, setToDo }) => {
   let [toDoTitle, setToDoTitle] = useState('');
   const changeToDoTitleValue = (event) => {
     setToDoTitle(event.target.value);
@@ -66,8 +66,8 @@ const CreateToDoContainer = (props) => {
     if (toDoTitle === '') {
       return alert('To Do는 입력해주세요 😉');
     }
-    let copy = [{ id: Date.now(), title: toDoTitle, comment: toDoComment, isDone: false }, ...props.toDo];
-    props.setToDo(copy);
+    let copy = [{ id: Date.now(), title: toDoTitle, comment: toDoComment, isDone: false }, ...toDo];
+    setToDo(copy);
     setToDoTitle('');
     setToDoComment('');
   };

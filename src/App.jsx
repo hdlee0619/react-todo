@@ -64,9 +64,9 @@ const App = () => {
             {toDo
               .filter((item) => item.isDone === false)
               .sort((a, b) => b.id - a.id)
-              .map((item) => {
+              .map((mapItem) => {
                 return (
-                  <ToDoCardContainer item={item} setToDo={setToDo} toDo={toDo} key={item.id}>
+                  <ToDoCardContainer mapItem={mapItem} toDo={toDo} setToDo={setToDo} key={mapItem.id}>
                     완료
                   </ToDoCardContainer>
                 );
@@ -77,9 +77,9 @@ const App = () => {
             {toDo
               .filter((item) => item.isDone !== false)
               .sort((a, b) => b.id - a.id)
-              .map((item) => {
+              .map((mapItem) => {
                 return (
-                  <ToDoCardContainer item={item} setToDo={setToDo} toDo={toDo} key={item.id}>
+                  <ToDoCardContainer mapItem={mapItem} setToDo={setToDo} toDo={toDo} key={mapItem.id}>
                     취소
                   </ToDoCardContainer>
                 );
