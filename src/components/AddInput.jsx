@@ -51,7 +51,7 @@ const ToDoSubmitBtn = styled.button`
   font-size: 15px;
 `;
 
-const AddInput = ({ toDo, setToDo }) => {
+const AddInput = ({ toDo, setToDoHandler }) => {
   let [toDoTitle, setToDoTitle] = useState('');
 
   let [toDoComment, setToDoComment] = useState('');
@@ -62,7 +62,7 @@ const AddInput = ({ toDo, setToDo }) => {
       return alert('To Do는 입력해주세요 😉');
     }
     let copy = [{ id: Date.now(), title: toDoTitle, comment: toDoComment, isDone: false }, ...toDo];
-    setToDo(copy);
+    setToDoHandler(copy);
     setToDoTitle('');
     setToDoComment('');
   };

@@ -41,6 +41,10 @@ const App = () => {
     { id: 1, title: '항해99', comment: 'todolist 만들기', isDone: true },
   ]);
 
+  const setToDoHandler = (copy) => {
+    setToDo(copy);
+  };
+
   return (
     <AppContainer>
       <Header>
@@ -48,12 +52,12 @@ const App = () => {
         <h3>React</h3>
       </Header>
       <main>
-        <AddInput toDo={toDo} setToDo={setToDo}></AddInput>
+        <AddInput toDo={toDo} setToDoHandler={setToDoHandler}></AddInput>
         <ToDoListContainer>
-          <ToDoList toDo={toDo} setToDo={setToDo} isDone={false}>
+          <ToDoList toDo={toDo} setToDoHandler={setToDoHandler} isDone={false}>
             Work.. 🔥
           </ToDoList>
-          <ToDoList toDo={toDo} setToDo={setToDo} isDone={true}>
+          <ToDoList toDo={toDo} setToDoHandler={setToDoHandler} isDone={true}>
             Done.. 🎉
           </ToDoList>
         </ToDoListContainer>
