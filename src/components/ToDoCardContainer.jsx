@@ -43,14 +43,18 @@ const BtnContainer = styled.div`
 `;
 
 const ToDoCardContainer = (props) => {
+  const deleteToDoCard = (id) => {
+    let copy = [...props.toDo];
+    props.setToDo(copy.filter((item) => props.item.id !== item.id));
+  };
   return (
     <ToDoCard>
       <div>
-        <CardTitle>{props.toDo.title}</CardTitle>
-        <CardComment>{props.toDo.comment}</CardComment>
+        <CardTitle>{props.item.title}</CardTitle>
+        <CardComment>{props.item.comment}</CardComment>
       </div>
       <BtnContainer>
-        <DeleteCardBtn>삭제</DeleteCardBtn>
+        <DeleteCardBtn onClick={deleteToDoCard}>삭제</DeleteCardBtn>
         <DoneCardBtn>{props.children}</DoneCardBtn>
       </BtnContainer>
     </ToDoCard>

@@ -66,7 +66,7 @@ const CreateToDoContainer = (props) => {
     if (toDoTitle === '') {
       return alert('To Do는 입력해주세요 😉');
     }
-    let copy = [{ id: props.toDo.length, title: toDoTitle, comment: toDoComment, isDone: false }, ...props.toDo];
+    let copy = [{ id: Date.now(), title: toDoTitle, comment: toDoComment, isDone: false }, ...props.toDo];
     props.setToDo(copy);
     setToDoTitle('');
     setToDoComment('');

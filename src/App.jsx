@@ -63,9 +63,9 @@ const App = () => {
           <ToDoList>
             {toDo
               .sort((a, b) => b.id - a.id)
-              .map((item, idx) => {
+              .map((item) => {
                 return (
-                  <ToDoCardContainer toDo={item} setToDo={setToDo} key={item.id}>
+                  <ToDoCardContainer item={item} setToDo={setToDo} toDo={toDo} key={item.id}>
                     완료
                   </ToDoCardContainer>
                 );
