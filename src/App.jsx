@@ -1,4 +1,4 @@
-import CreateToDoContainer from './components/CreateToDoContainer';
+import AddInput from './components/AddInput';
 import ToDoList from './components/ToDoList';
 
 import styled from 'styled-components';
@@ -48,7 +48,7 @@ const App = () => {
         <h3>React</h3>
       </Header>
       <main>
-        <CreateToDoContainer toDo={toDo} setToDo={setToDo}></CreateToDoContainer>
+        <AddInput toDo={toDo} setToDo={setToDo}></AddInput>
         <ToDoListContainer>
           <ToDoList toDo={toDo} setToDo={setToDo} isDone={false}>
             Work.. 🔥

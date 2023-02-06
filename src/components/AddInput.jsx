@@ -51,7 +51,7 @@ const ToDoSubmitBtn = styled.button`
   font-size: 15px;
 `;
 
-const CreateToDoContainer = ({ toDo, setToDo }) => {
+const AddInput = ({ toDo, setToDo }) => {
   let [toDoTitle, setToDoTitle] = useState('');
 
   let [toDoComment, setToDoComment] = useState('');
@@ -84,4 +84,4 @@ const CreateToDoContainer = ({ toDo, setToDo }) => {
   );
 };
 
-export default CreateToDoContainer;
+export default AddInput;
