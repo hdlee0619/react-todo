@@ -34,3 +34,12 @@
 - Todo의 상태가 `Working` 이면 위쪽에 위치하고, `Done`이면 아래쪽에 위치하도록 구현
 - Layout의 최대 넓이는 1200px, 최소 넓이는 800px로 제한하고, 전체 화면의 가운데로 정렬
 - 반복되는 컴포넌트를 분리
+
+## 5. 분리한 components
+
+🚚 src 
+┣ 📁 components 
+┃ ┣ 📄 CreateToDoContainer.jsx 
+┃ ┣ 📄 ToDoCards.jsx 
+┃ ┗ 📄 ToDoList.jsx 
+┗ 📄 App.jsx
