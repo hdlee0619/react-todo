@@ -62,7 +62,8 @@ const CreateToDoContainer = ({ toDo, setToDo }) => {
     setToDoComment(event.target.value);
   };
 
-  const addToDo = () => {
+  const postRequest = (event) => {
+    event.preventDefault();
     if (toDoTitle === '') {
       return alert('To Do는 입력해주세요 😉');
     }
@@ -70,10 +71,6 @@ const CreateToDoContainer = ({ toDo, setToDo }) => {
     setToDo(copy);
     setToDoTitle('');
     setToDoComment('');
-  };
-
-  const postRequest = (event) => {
-    event.preventDefault();
   };
 
   return (
@@ -87,7 +84,7 @@ const CreateToDoContainer = ({ toDo, setToDo }) => {
           <InputHead>Comment</InputHead>
           <ToDoInput onChange={changeToDoCommentValue} value={toDoComment} placeholder="내용을 입력하세요"></ToDoInput>
         </InputContainer>
-        <ToDoSubmitBtn onClick={addToDo}>등록</ToDoSubmitBtn>
+        <ToDoSubmitBtn>등록</ToDoSubmitBtn>
       </FormContainer>
     </>
   );
