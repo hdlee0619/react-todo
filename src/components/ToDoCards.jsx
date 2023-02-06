@@ -31,7 +31,7 @@ const BtnContainer = styled.div`
   justify-content: space-evenly;
 `;
 
-const ToDoCardContainer = ({ mapItem, toDo, setToDo, children }) => {
+const ToDoCards = ({ mapItem, toDo, setToDo, children }) => {
   const deleteToDoCard = () => {
     let copy = [...toDo];
     setToDo(copy.filter((item) => mapItem.id !== item.id));
@@ -63,4 +63,4 @@ const ToDoCardContainer = ({ mapItem, toDo, setToDo, children }) => {
   );
 };
 
-export default ToDoCardContainer;
+export default ToDoCards;

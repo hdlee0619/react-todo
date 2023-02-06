@@ -1,7 +1,8 @@
 import CreateToDoContainer from './components/CreateToDoContainer';
+import ToDoList from './components/ToDoList';
+
 import styled from 'styled-components';
 import { useState } from 'react';
-import ToDoCardContainer from './components/ToDoCardContainer';
 
 const AppContainer = styled.div`
   max-width: 1200px;
@@ -25,23 +26,13 @@ const Header = styled.div`
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 `;
 
-const ListContainer = styled.div`
+const ToDoListContainer = styled.div`
   margin-top: 50px;
   background-color: #f6dfbf;
   padding-top: 8px;
   padding-bottom: 8px;
   border-radius: 20px;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-`;
-
-const ToDoTitle = styled.h4`
-  font-size: 24px;
-  margin-left: 17px;
-`;
-
-const ToDoList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
 `;
 
 const App = () => {
@@ -58,34 +49,14 @@ const App = () => {
       </Header>
       <main>
         <CreateToDoContainer toDo={toDo} setToDo={setToDo}></CreateToDoContainer>
-        <ListContainer>
-          <ToDoTitle>Work.. 🔥</ToDoTitle>
-          <ToDoList>
-            {toDo
-              .filter((item) => item.isDone === false)
-              .sort((a, b) => b.id - a.id)
-              .map((mapItem) => {
-                return (
-                  <ToDoCardContainer mapItem={mapItem} toDo={toDo} setToDo={setToDo} key={mapItem.id}>
-                    완료
-                  </ToDoCardContainer>
-                );
-              })}
+        <ToDoListContainer>
+          <ToDoList toDo={toDo} setToDo={setToDo} isDone={false}>
+            Work.. 🔥
           </ToDoList>
-          <ToDoTitle>Done.. 🎉</ToDoTitle>
-          <ToDoList>
-            {toDo
-              .filter((item) => item.isDone !== false)
-              .sort((a, b) => b.id - a.id)
-              .map((mapItem) => {
-                return (
-                  <ToDoCardContainer mapItem={mapItem} setToDo={setToDo} toDo={toDo} key={mapItem.id}>
-                    취소
-                  </ToDoCardContainer>
-                );
-              })}
+          <ToDoList toDo={toDo} setToDo={setToDo} isDone={true}>
+            Done.. 🎉
           </ToDoList>
-        </ListContainer>
+        </ToDoListContainer>
       </main>
     </AppContainer>
   );
