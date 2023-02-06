@@ -13,25 +13,14 @@ const ToDoCard = styled.div`
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 `;
 
-const CardTitle = styled.h3`
+const CardText = styled.h4`
   color: #594545;
+  font-size: ${(props) => (props.toDoComment ? '16px' : '23px')};
 `;
 
-const CardComment = styled.h4`
-  color: #594545;
-`;
-
-const DeleteCardBtn = styled.button`
-  background-color: #ee6983;
-  color: #850e35;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-`;
-
-const DoneCardBtn = styled.button`
-  background-color: #b4cfb0;
-  color: #5f7161;
+const CardBtn = styled.button`
+  background-color: ${(props) => (props.doneBg ? '#b4cfb0' : '#ee6983')};
+  color: ${(props) => (props.doneColor ? '#5f7161' : '#850e35')};
   border: none;
   padding: 10px 20px;
   border-radius: 10px;
@@ -61,12 +50,14 @@ const ToDoCardContainer = ({ mapItem, toDo, setToDo, children }) => {
   return (
     <ToDoCard>
       <div>
-        <CardTitle>{mapItem.title}</CardTitle>
-        <CardComment>{mapItem.comment}</CardComment>
+        <CardText>{mapItem.title}</CardText>
+        <CardText toDoComment>{mapItem.comment}</CardText>
       </div>
       <BtnContainer>
-        <DeleteCardBtn onClick={deleteToDoCard}>삭제</DeleteCardBtn>
-        <DoneCardBtn onClick={changeStateIsDone}>{children}</DoneCardBtn>
+        <CardBtn onClick={deleteToDoCard}>삭제</CardBtn>
+        <CardBtn doneBg doneColor onClick={changeStateIsDone}>
+          {children}
+        </CardBtn>
       </BtnContainer>
     </ToDoCard>
   );
