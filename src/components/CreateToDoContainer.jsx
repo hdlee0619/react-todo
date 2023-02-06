@@ -53,14 +53,8 @@ const ToDoSubmitBtn = styled.button`
 
 const CreateToDoContainer = ({ toDo, setToDo }) => {
   let [toDoTitle, setToDoTitle] = useState('');
-  const changeToDoTitleValue = (event) => {
-    setToDoTitle(event.target.value);
-  };
 
   let [toDoComment, setToDoComment] = useState('');
-  const changeToDoCommentValue = (event) => {
-    setToDoComment(event.target.value);
-  };
 
   const postRequest = (event) => {
     event.preventDefault();
@@ -78,11 +72,11 @@ const CreateToDoContainer = ({ toDo, setToDo }) => {
       <FormContainer action="/" onSubmit={postRequest}>
         <InputContainer>
           <InputHead>To Do</InputHead>
-          <ToDoInput onChange={changeToDoTitleValue} value={toDoTitle} placeholder="할 일을 입력하세요"></ToDoInput>
+          <ToDoInput onChange={(e) => setToDoTitle(e.target.value)} value={toDoTitle} placeholder="할 일을 입력하세요"></ToDoInput>
         </InputContainer>
         <InputContainer>
           <InputHead>Comment</InputHead>
-          <ToDoInput onChange={changeToDoCommentValue} value={toDoComment} placeholder="내용을 입력하세요"></ToDoInput>
+          <ToDoInput onChange={(e) => setToDoComment(e.target.value)} value={toDoComment} placeholder="내용을 입력하세요"></ToDoInput>
         </InputContainer>
         <ToDoSubmitBtn>등록</ToDoSubmitBtn>
       </FormContainer>
