@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const FormContainer = styled.form`
   display: flex;
@@ -66,12 +66,18 @@ const AddInput = ({ toDo, setToDoHandler }) => {
     setToDoComment('');
   };
 
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, [toDo]);
+
   return (
     <>
       <FormContainer action="/" onSubmit={postRequest}>
         <InputContainer>
           <InputHead>To Do</InputHead>
-          <ToDoInput onChange={(e) => setToDoTitle(e.target.value)} value={toDoTitle} placeholder="할 일을 입력하세요"></ToDoInput>
+          <ToDoInput ref={inputRef} onChange={(e) => setToDoTitle(e.target.value)} value={toDoTitle} placeholder="할 일을 입력하세요"></ToDoInput>
         </InputContainer>
         <InputContainer>
           <InputHead>Comment</InputHead>
