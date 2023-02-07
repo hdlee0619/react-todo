@@ -52,8 +52,8 @@ const ToDoSubmitBtn = styled.button`
 `;
 
 const AddInput = ({ toDo, setToDo }) => {
-  let [toDoTitle, setToDoTitle] = useInput('');
-  let [toDoComment, setToDoComment] = useInput('');
+  let [toDoTitle, setToDoTitle, resetTitle] = useInput('');
+  let [toDoComment, setToDoComment, resetComment] = useInput('');
 
   const postRequest = (event) => {
     event.preventDefault();
@@ -62,13 +62,14 @@ const AddInput = ({ toDo, setToDo }) => {
     }
     let copy = [{ id: Date.now(), title: toDoTitle, comment: toDoComment, isDone: false }, ...toDo];
     setToDo(copy);
-    setToDoTitle('');
-    setToDoComment('');
+    resetTitle();
+    resetComment();
   };
 
   const inputRef = useRef();
 
   useEffect(() => {
+    console.log('hi');
     inputRef.current.focus();
   }, [toDoTitle]);
 
@@ -77,11 +78,11 @@ const AddInput = ({ toDo, setToDo }) => {
       <FormContainer action="/" onSubmit={postRequest}>
         <InputContainer>
           <InputHead>To Do</InputHead>
-          <ToDoInput ref={inputRef} onChange={(e) => setToDoTitle(e.target.value)} value={toDoTitle} placeholder="할 일을 입력하세요"></ToDoInput>
+          <ToDoInput ref={inputRef} onChange={setToDoTitle} value={toDoTitle} placeholder="할 일을 입력하세요"></ToDoInput>
         </InputContainer>
         <InputContainer>
           <InputHead>Comment</InputHead>
-          <ToDoInput onChange={(e) => setToDoComment(e.target.value)} value={toDoComment} placeholder="내용을 입력하세요"></ToDoInput>
+          <ToDoInput onChange={setToDoComment} value={toDoComment} placeholder="내용을 입력하세요"></ToDoInput>
         </InputContainer>
         <ToDoSubmitBtn>등록</ToDoSubmitBtn>
       </FormContainer>
