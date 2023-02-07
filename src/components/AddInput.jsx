@@ -70,7 +70,7 @@ const AddInput = ({ toDo, setToDoHandler }) => {
 
   useEffect(() => {
     inputRef.current.focus();
-  }, [toDo]);
+  }, [toDoTitle]);
 
   return (
     <>
