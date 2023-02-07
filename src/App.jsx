@@ -2,7 +2,7 @@ import AddInput from './components/AddInput';
 import ToDoList from './components/ToDoList';
 
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 const AppContainer = styled.div`
   max-width: 1200px;
@@ -40,9 +40,9 @@ const App = () => {
     { id: 1, title: '항해99', comment: 'todolist 만들기', isDone: true },
   ]);
 
-  const setToDoHandler = (copy) => {
-    setToDo(copy);
-  };
+  const setToDoHandler = useCallback((item) => {
+    setToDo(item);
+  }, []);
 
   return (
     <AppContainer>
