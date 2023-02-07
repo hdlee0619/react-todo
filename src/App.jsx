@@ -1,8 +1,8 @@
 import AddInput from './components/AddInput';
 import ToDoList from './components/ToDoList';
+import useInput from './hook/useInput';
 
 import styled from 'styled-components';
-import { useState, useCallback } from 'react';
 
 const AppContainer = styled.div`
   max-width: 1200px;
@@ -35,14 +35,10 @@ const ToDoListContainer = styled.div`
 `;
 
 const App = () => {
-  let [toDo, setToDo] = useState([
+  let [toDo, setToDo] = useInput([
     { id: 0, title: '리액트공부하기', comment: '리액트 기초를 공부해봅시다.', isDone: false },
     { id: 1, title: '항해99', comment: 'todolist 만들기', isDone: true },
   ]);
-
-  const setToDoHandler = useCallback((item) => {
-    setToDo(item);
-  }, []);
 
   return (
     <AppContainer>
@@ -51,12 +47,12 @@ const App = () => {
         <h3>React</h3>
       </Header>
       <main>
-        <AddInput toDo={toDo} setToDoHandler={setToDoHandler}></AddInput>
+        <AddInput toDo={toDo} setToDo={setToDo}></AddInput>
         <ToDoListContainer>
-          <ToDoList toDo={toDo} setToDoHandler={setToDoHandler} isDone={false}>
+          <ToDoList toDo={toDo} setToDo={setToDo} isDone={false}>
             Work.. 🔥
           </ToDoList>
-          <ToDoList toDo={toDo} setToDoHandler={setToDoHandler} isDone={true}>
+          <ToDoList toDo={toDo} setToDo={setToDo} isDone={true}>
             Done.. 🎉
           </ToDoList>
         </ToDoListContainer>

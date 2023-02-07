@@ -31,15 +31,15 @@ const BtnContainer = styled.div`
   justify-content: space-evenly;
 `;
 
-const ToDoCards = ({ mapItem, toDo, setToDoHandler, children }) => {
+const ToDoCards = ({ mapItem, toDo, setToDo, children }) => {
   const deleteToDoCard = () => {
     let copy = [...toDo];
-    setToDoHandler(copy.filter((item) => mapItem.id !== item.id));
+    setToDo(copy.filter((item) => mapItem.id !== item.id));
   };
   const changeStateIsDone = () => {
     let copy = [...toDo];
     mapItem.isDone = mapItem.isDone ? false : true;
-    setToDoHandler(copy.map((item) => (item.id === mapItem.id ? mapItem : item)));
+    setToDo(copy.map((item) => (item.id === mapItem.id ? mapItem : item)));
   };
   return (
     <ToDoCard>

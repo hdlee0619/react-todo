@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import useInput from '../hook/useInput';
 
 const FormContainer = styled.form`
   display: flex;
@@ -50,10 +51,9 @@ const ToDoSubmitBtn = styled.button`
   font-size: 15px;
 `;
 
-const AddInput = ({ toDo, setToDoHandler }) => {
-  let [toDoTitle, setToDoTitle] = useState('');
-
-  let [toDoComment, setToDoComment] = useState('');
+const AddInput = ({ toDo, setToDo }) => {
+  let [toDoTitle, setToDoTitle] = useInput('');
+  let [toDoComment, setToDoComment] = useInput('');
 
   const postRequest = (event) => {
     event.preventDefault();
@@ -61,7 +61,7 @@ const AddInput = ({ toDo, setToDoHandler }) => {
       return alert('To Do는 입력해주세요 😉');
     }
     let copy = [{ id: Date.now(), title: toDoTitle, comment: toDoComment, isDone: false }, ...toDo];
-    setToDoHandler(copy);
+    setToDo(copy);
     setToDoTitle('');
     setToDoComment('');
   };
